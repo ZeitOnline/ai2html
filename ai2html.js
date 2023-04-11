@@ -3134,6 +3134,9 @@ function main() {
   // Parse an AI CharacterAttributes object
   function getCharStyle(c) {
     var o = convertAiColor(c.fillColor);
+    if (c.strokeColor.typename != "NoColor") {
+      o.stroke = convertAiColor(c.strokeColor).color;
+    }
     var caps = String(c.capitalization);
     o.aifont = c.textFont.name;
     o.size = Math.round(c.size);
@@ -3596,6 +3599,20 @@ function main() {
     }
     if (aiStyle.color) {
       cssStyle.color = aiStyle.color;
+    }
+    if (aiStyle.stroke) {
+      cssStyle["text-shadow"] =
+        "-1px 1px 2px " +
+        aiStyle.stroke +
+        "," +
+        "1px 1px 2px " +
+        aiStyle.stroke +
+        "," +
+        "1px -1px 2px " +
+        aiStyle.stroke +
+        "," +
+        "-1px -1px 2px " +
+        aiStyle.stroke;
     }
     // applying vshift only to point text
     // (based on experience with NYTFranklin)

@@ -1,8 +1,8 @@
 # Einrichtung bei ZON
 
 1. Repo klonen. 
-2. `npm run clean` ausführen, um alte `ai2html.js`/`ai2html.jsx`-Skripte zu entfernen. 
-3. `npm run copy` ausführen, um das aktuelle Skript in den Illustrator-Ordner zu kopieren. Die alte Datei wird dabei überschrieben. Nach einem Update genügt also ein erneutes `npm run copy`, um Illustrator auf den neuesten Stand zu bringen.
+2. `npm run clean` ausführen, um alte `ai2html.js`/`ai2html.jsx`-Skripte in `/Applications/Adobe Illustrator 2022/Presets.localized/de_DE/Skripten` zu entfernen. 
+3. `npm run copy` ausführen, um das aktuelle Skript in den Illustrator-Ordner zu kopieren. Der Befehl überschreibt, falls vorhanden, die alte Datei. Nach einem Update des Skripts genügt also ein erneutes `npm run copy`, um das Skript in Illustrator zu aktualisieren.
 
 P.s.: Ein symbolic link wäre eleganter, sorgt aber für Bugs in Illustrator... 🫠
 

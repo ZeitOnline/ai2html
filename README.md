@@ -2,7 +2,7 @@
 
 1. Repo klonen. 
 2. `npm run clean` ausführen, um alte `ai2html.js`/`ai2html.jsx`-Skripte zu entfernen. 
-3. `npm run copy` ausführen, um das aktuelle Skript in den Illustrator-Ordner zu kopieren. Die alte Datei wird dabei überschrieben. Wenn ein Update gemacht wurde, genügt also ein erneutes `npm run copy`, um Illustrator auf den neuesten Stand zu bringen.
+3. `npm run copy` ausführen, um das aktuelle Skript in den Illustrator-Ordner zu kopieren. Die alte Datei wird dabei überschrieben. Nach einem Update genügt also ein erneutes `npm run copy`, um Illustrator auf den neuesten Stand zu bringen.
 
 P.s.: Ein symbolic link wäre eleganter, sorgt aber für Bugs in Illustrator... 🫠
 

@@ -1,10 +1,10 @@
 # Einrichtung bei ZON
 
-1. Repo klonen. 
-2. `npm run clean` ausführen, um alte `ai2html.js`/`ai2html.jsx`-Skripte in `/Applications/Adobe Illustrator 2022/Presets.localized/de_DE/Skripten` zu entfernen. 
-3. `npm run copy` ausführen, um das aktuelle Skript in den Illustrator-Ordner zu kopieren. Der Befehl überschreibt, falls vorhanden, die alte Datei. Nach einem Update des Skripts genügt also ein erneutes `npm run copy`, um das Skript in Illustrator zu aktualisieren.
+1. [ai2html.jsx](https://raw.githubusercontent.com/ZeitOnline/zg-ai2html/master/ai2html.jsx) herunterladen.
+2. In `/Applications/Adobe Illustrator JAHRESZAHL/Presets.localized/de_DE/Skripten` ai2html.js oder ai2html.jsx, falls vorhanden löschen. Heruntergeladene Datei stattdessen hier abspeichern.
+3. Nach einem Illustrator-Neustart nun ai2html unter Dateien > Skripten zur Verfügung stehen.
 
-P.s.: Ein symbolic link wäre eleganter, sorgt aber für Bugs in Illustrator... 🫠
+
 
 # [ai2html](http://ai2html.org)
 

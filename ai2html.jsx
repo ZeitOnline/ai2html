@@ -4174,6 +4174,9 @@ function main() {
       fill = convertAiColor(item.fillColor);
       style.fill = fill.color;
     }
+    if (item.opacity < 100) {
+      style.FillOpacity = roundTo(item.opacity / 100, 2);
+    }
     if (item.stroked) {
       stroke = convertAiColor(item.strokeColor);
       style.stroke = stroke.color;

@@ -7,7 +7,9 @@
     "test": "mocha --check-leaks",
     "prepublishOnly": "./prepublish.sh",
     "copy": "sudo cp ai2html.jsx /Applications/\"Adobe Illustrator 2022\"/Presets.localized/de_DE/Skripten/ai2html.jsx",
-    "clean": "sudo rm /Applications/\"Adobe Illustrator 2022\"/Presets.localized/de_DE/Skripten/ai2html.*"
+    "clean": "sudo rm /Applications/\"Adobe Illustrator 2022\"/Presets.localized/de_DE/Skripten/ai2html.*",
+    "link": "sudo ln -s ai2html.jsx /Applications/\"Adobe Illustrator 2022\"/Presets.localized/de_DE/Skripten/ai2html.jsx",
+    "publish": "sh ./deploy.sh"
   },
   "repository": {
     "type": "git",

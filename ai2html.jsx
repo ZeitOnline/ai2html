@@ -5300,6 +5300,10 @@ function main() {
       css += blockStart + " {";
       css += t3 + "max-width: none !important;";
       css += blockEnd;
+
+      css += "div.article-body {";
+      css += t3 + "max-width: 100% !important;";
+      css += blockEnd;
     }
 
     css += blockStart + "." + nameSpace + "aiAbs {";

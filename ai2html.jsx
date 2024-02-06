@@ -96,6 +96,7 @@ function main() {
     notes: "",
     sources: "",
     credit: "",
+    full_viewport_width: false, // Set the width of the graphic to 100vw
 
     // List of settings to include in the "ai2html-settings" text block
     settings_block: [
@@ -115,6 +116,7 @@ function main() {
       "notes",
       "sources",
       "credit",
+      "full_viewport_width",
     ],
 
     // list of settings to include in the config.yml file
@@ -5190,8 +5192,13 @@ function main() {
     if (widthRange[0] == widthRange[1]) {
       // fixed width
       // inlineSpacerStyle += "width:" + abBox.width + "px; height:" + abBox.height + "px;";
-      inlineStyle +=
-        "width:" + abBox.width + "px; height:" + abBox.height + "px;";
+      if (!settings.full_viewport_width) {
+        inlineStyle +=
+          "width:" + abBox.width + "px; height:" + abBox.height + "px;";
+      } else {
+        inlineStyle += "width: 100vw;";
+        inlineStyle += "height: " + Math.round(100 / aspectRatio) + "vw;";
+      }
     } else {
       // Set height of dynamic artboards using vertical padding as a %, to preserve aspect ratio.
       inlineSpacerStyle =
@@ -5274,6 +5281,51 @@ function main() {
       css += t3 + "color: rgba(209, 0, 0, 0.5) !important;";
     }
     css += blockEnd;
+
+    if (settings.full_viewport_width) {
+      css +=
+        blockStart +
+        " ." +
+        nameSpace +
+        "Typo-Headline," +
+        blockStart +
+        " ." +
+        nameSpace +
+        "Typo-Subline {";
+      css += t3 + "width: 100% !important;";
+      css += blockEnd;
+
+      css +=
+        blockStart +
+        " ." +
+        nameSpace +
+        "Typo-Headline p," +
+        blockStart +
+        " ." +
+        nameSpace +
+        "Typo-Subline p {";
+      css += t3 + "width: 100% !important;";
+      css += t3 + "text-align: center;";
+      css += blockEnd;
+
+      css += blockStart + " ." + nameSpace + "artboard {";
+      css += t3 + "transform: translateX(-0.875rem);";
+      css += blockEnd;
+
+      css +=
+        "@media screen and (min-width: 48em) {" +
+        blockStart +
+        " ." +
+        nameSpace +
+        "artboard {";
+      css += t3 + "transform: translateX(-1.25rem);";
+      css += blockEnd;
+      css += blockEnd;
+
+      css += blockStart + " {";
+      css += t3 + "max-width: none !important;";
+      css += blockEnd;
+    }
 
     css += blockStart + "." + nameSpace + "aiAbs {";
     css += t3 + "position:absolute;";

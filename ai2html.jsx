@@ -5188,28 +5188,28 @@ function main() {
     var inlineSpacerStyle = "";
     var html = "";
 
-    // Set size of graphic using inline CSS
-    if (widthRange[0] == widthRange[1]) {
-      // fixed width
-      // inlineSpacerStyle += "width:" + abBox.width + "px; height:" + abBox.height + "px;";
-      if (!settings.full_viewport_width) {
+    if (isTrue(settings.full_viewport_width)) {
+      inlineStyle += "width: 100vw;";
+      inlineStyle += "height: " + 100 / aspectRatio + "vw;";
+    } else {
+      // Set size of graphic using inline CSS
+      if (widthRange[0] == widthRange[1]) {
+        // fixed width
+        // inlineSpacerStyle += "width:" + abBox.width + "px; height:" + abBox.height + "px;";
         inlineStyle +=
           "width:" + abBox.width + "px; height:" + abBox.height + "px;";
       } else {
-        inlineStyle += "width: 100vw;";
-        inlineStyle += "height: " + Math.round(100 / aspectRatio) + "vw;";
-      }
-    } else {
-      // Set height of dynamic artboards using vertical padding as a %, to preserve aspect ratio.
-      inlineSpacerStyle =
-        "padding: 0 0 " + formatCssPct(abBox.height, abBox.width) + " 0;";
-      if (widthRange[0] > 0) {
-        inlineStyle += "min-width: " + widthRange[0] + "px;";
-      }
-      if (widthRange[1] < Infinity) {
-        inlineStyle += "max-width: " + widthRange[1] + "px;";
-        inlineStyle +=
-          "max-height: " + Math.round(widthRange[1] / aspectRatio) + "px";
+        // Set height of dynamic artboards using vertical padding as a %, to preserve aspect ratio.
+        inlineSpacerStyle =
+          "padding: 0 0 " + formatCssPct(abBox.height, abBox.width) + " 0;";
+        if (widthRange[0] > 0) {
+          inlineStyle += "min-width: " + widthRange[0] + "px;";
+        }
+        if (widthRange[1] < Infinity) {
+          inlineStyle += "max-width: " + widthRange[1] + "px;";
+          inlineStyle +=
+            "max-height: " + Math.round(widthRange[1] / aspectRatio) + "px";
+        }
       }
     }
 
@@ -5283,31 +5283,6 @@ function main() {
     css += blockEnd;
 
     if (settings.full_viewport_width) {
-      css +=
-        blockStart +
-        " ." +
-        nameSpace +
-        "Typo-Headline," +
-        blockStart +
-        " ." +
-        nameSpace +
-        "Typo-Subline {";
-      css += t3 + "width: 100% !important;";
-      css += blockEnd;
-
-      css +=
-        blockStart +
-        " ." +
-        nameSpace +
-        "Typo-Headline p," +
-        blockStart +
-        " ." +
-        nameSpace +
-        "Typo-Subline p {";
-      css += t3 + "width: 100% !important;";
-      css += t3 + "text-align: center;";
-      css += blockEnd;
-
       css += blockStart + " ." + nameSpace + "artboard {";
       css += t3 + "transform: translateX(-0.875rem);";
       css += blockEnd;
